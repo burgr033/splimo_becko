@@ -69,7 +69,6 @@ def roll_risiko(talentpoints):
         return("Risikowurf: {} >>> **Patzer!**".format(str(integers)))
     erg = largest_integer + second_largest_integer
     z = erg + int(talentpoints)
-    #return("{} | {}".format(str(integers), talentpoints)
     return("Risikowurf: {} >>> ({}) + Talentpunkte({}) = **{}**".format(str(integers),str(erg),str(talentpoints),str(z)))
 
 def coin():
@@ -78,7 +77,7 @@ def coin():
         ergebnis = "Kopf"
     else:
         ergebnis = "Zahl"
-    return("Münzwurf ergibt: {}".formatergebnis)
+    return("Münzwurf ergibt: {}".format(ergebnis))
 
 def roll_initiative(initiative):
     w = randint(1,6)
