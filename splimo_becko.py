@@ -71,7 +71,7 @@ def roll_risiko(talentpoints):
         return("Risikowurf: {} >>> **Patzer!**".format(str(integers)))
     erg = largest_integer + second_largest_integer
     z = erg + int(talentpoints)
-    if largest_integer + second_largest_integer >= 20
+    if largest_integer + second_largest_integer >= 19:
         return("Risikowurf: {} >>> ({}) + Talentpunkte({}) = **Krit!** **{}**").format(str(integers),str(erg),str(talentpoints),str(z)))
     return("Risikowurf: {} >>> ({}) + Talentpunkte({}) = **{}**".format(str(integers),str(erg),str(talentpoints),str(z)))
 
