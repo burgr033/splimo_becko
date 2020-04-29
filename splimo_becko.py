@@ -51,6 +51,8 @@ def roll_normal(talentpoints):
         return("Standardwurf: [{},{}] >>> **Patzer!**".format(str(y),str(x)))
     else:
         ergebnis = z + int(talentpoints)
+        if z >= 19:
+            return("Standardwurf: [{},{}] >>> ({}) + Talentpunkte({}) = **Krit!** **{}**".format(str(y),str(x),str(z),str(talentpoints),str(ergebnis)))
         return("Standardwurf: [{},{}] >>> ({}) + Talentpunkte({}) = **{}**".format(str(y),str(x),str(z),str(talentpoints),str(ergebnis)))
 
 def roll_sicherheit(talentpoints):
@@ -69,6 +71,8 @@ def roll_risiko(talentpoints):
         return("Risikowurf: {} >>> **Patzer!**".format(str(integers)))
     erg = largest_integer + second_largest_integer
     z = erg + int(talentpoints)
+    if largest_integer + second_largest_integer >= 20
+        return("Risikowurf: {} >>> ({}) + Talentpunkte({}) = **Krit!** **{}**").format(str(integers),str(erg),str(talentpoints),str(z)))
     return("Risikowurf: {} >>> ({}) + Talentpunkte({}) = **{}**".format(str(integers),str(erg),str(talentpoints),str(z)))
 
 def coin():
