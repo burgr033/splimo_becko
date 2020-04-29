@@ -86,7 +86,7 @@ def coin():
 def roll_initiative(initiative):
     w = randint(1,6)
     ergebnis = int(initiative) - w
-    return("Initiativewurf: [{}] >>> Initiative({}) - ({}) = **{}**".format(str(w),str(w),str(initiative),ergebnis))
+    return("Initiativewurf: [{}] >>> Initiative({}) - ({}) = **{}**".format(str(w),str(initiative),str(w),ergebnis))
 
 def roll_schaden(dice_count,dice_type,mod,plumin):
     total = 0
