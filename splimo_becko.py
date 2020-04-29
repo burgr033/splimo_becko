@@ -72,7 +72,7 @@ def roll_risiko(talentpoints):
     erg = largest_integer + second_largest_integer
     z = erg + int(talentpoints)
     if largest_integer + second_largest_integer >= 19:
-        return("Risikowurf: {} >>> ({}) + Talentpunkte({}) = **Krit!** **{}**").format(str(integers),str(erg),str(talentpoints),str(z)))
+        return("Risikowurf: {} >>> ({}) + Talentpunkte({}) = **Krit!** **{}**".format(str(integers),str(erg),str(talentpoints),str(z)))
     return("Risikowurf: {} >>> ({}) + Talentpunkte({}) = **{}**".format(str(integers),str(erg),str(talentpoints),str(z)))
 
 def coin():
