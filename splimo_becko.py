@@ -13,6 +13,9 @@ bot = commands.Bot(command_prefix='!', description="SpliMo Becko zu Ihren Dienst
 #we want our own help command later
 bot.remove_command('help')
 
+d10 = cfg['d10emoji']
+d6 = cfg['d6emoji']
+
 #used for purge command
 def is_me(m):
     return m.author == bot.user
@@ -48,17 +51,17 @@ def roll_normal(talentpoints):
     x = randint(1, 10)
     z = y + x
     if z <= 3:
-        return("Standardwurf: [{},{}] >>> **Patzer!**".format(str(y),str(x)))
+        return("\n{}{}\n[{},{}] \n**Patzer!**".format(d10,d10,str(y),str(x)))
     else:
         ergebnis = z + int(talentpoints)
         if z >= 19:
-            return("Standardwurf: [{},{}] >>> ({}) + Talentpunkte({}) = **Krit!** **{}**".format(str(y),str(x),str(z),str(talentpoints),str(ergebnis)))
-        return("Standardwurf: [{},{}] >>> ({}) + Talentpunkte({}) = **{}**".format(str(y),str(x),str(z),str(talentpoints),str(ergebnis)))
+            return("\n{}{}\n[{},{}] > ({}) + Talentpunkte({}) \n**Krit!** **{}**".format(d10,d10,str(y),str(x),str(z),str(talentpoints),str(ergebnis)))
+        return("\n{}{}\n[{},{}] > ({}) + Talentpunkte({}) \n**{}**".format(d10,d10,str(y),str(x),str(z),str(talentpoints),str(ergebnis)))
 
 def roll_sicherheit(talentpoints):
     y = randint(1, 10)
     z = y + int(talentpoints)
-    return("Sicherheitswurf: [{}] >>> ({}) + Talentpunkte({}) = **{}**".format(str(y),str(y),str(talentpoints),str(z)))
+    return("\n{}\n[{}] > ({}) + Talentpunkte({}) \n**{}**".format(d10,str(y),str(y),str(talentpoints),str(z)))
 
 def roll_risiko(talentpoints):
     integers = [randint(1,10),randint(1,10),randint(1,10),randint(1,10)]
@@ -68,12 +71,12 @@ def roll_risiko(talentpoints):
     second_largest_integer = sorted_integers[1]
     second_smallest_integer = sorted_integers[-2]
     if smallest_integer + second_smallest_integer <= 3:
-        return("Risikowurf: {} >>> **Patzer!**".format(str(integers)))
+        return("\n{}{}{}{}\n{} \n **Patzer!**".format(d10,d10,d10,d10,str(integers)))
     erg = largest_integer + second_largest_integer
     z = erg + int(talentpoints)
     if largest_integer + second_largest_integer >= 19:
-        return("Risikowurf: {} >>> ({}) + Talentpunkte({}) = **Krit!** **{}**".format(str(integers),str(erg),str(talentpoints),str(z)))
-    return("Risikowurf: {} >>> ({}) + Talentpunkte({}) = **{}**".format(str(integers),str(erg),str(talentpoints),str(z)))
+        return("\n{}{}{}{}\n{} > ({}) + Talentpunkte({}) \n**Krit!** **{}**".format(d10,d10,d10,d10,str(integers),str(erg),str(talentpoints),str(z)))
+    return("\n{}{}{}{}\n{} > ({}) + Talentpunkte({})\n**{}**".format(d10,d10,d10,d10,str(integers),str(erg),str(talentpoints),str(z)))
 
 def coin():
     z = randint(1,2)
@@ -86,7 +89,7 @@ def coin():
 def roll_initiative(initiative):
     w = randint(1,6)
     ergebnis = int(initiative) - w
-    return("Initiativewurf: [{}] >>> Initiative({}) - ({}) = **{}**".format(str(w),str(initiative),str(w),ergebnis))
+    return("\n{}\n[{}] > Initiative({}) - ({}) \n **{}**".format(d6,str(w),str(initiative),str(w),ergebnis))
 
 def roll_schaden(dice_count,dice_type,mod,plumin):
     total = 0
@@ -104,7 +107,8 @@ def roll_schaden(dice_count,dice_type,mod,plumin):
         total -= int(mod)
         return("{}W{}-{} Wurf: {} >>> ({}) - Modifikator({}) = **{}**".format(int(dice_count),int(dice_type),int(mod),numbers,ergebeforemod,int(mod),total))
     else:
-        return("{}W{} Wurf: {} >>> ({}) = **{}**".format(int(dice_count),int(dice_type),numbers,ergebeforemod,total))
+        return("{}W{} Wurf: {} >>> ({}) = **{}**".format(
+            int(dice_count),int(dice_type),numbers,ergebeforemod,total))
 @bot.event
 async def on_ready():
     print('Logged in as')
