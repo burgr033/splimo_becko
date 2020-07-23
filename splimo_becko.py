@@ -116,7 +116,7 @@ async def on_ready():
     print(bot.user.id)
     print('------')
 
-# Parse !roll
+# Parse !roll 
 @bot.command(pass_context=True,description='')
 async def roll(ctx, roll : str):
     author = ctx.message.author.mention
